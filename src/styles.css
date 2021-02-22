@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+body {
+  font-family: "Karla", sans-serif;
+  scrollbar-width: none;
+  padding-top: 4.5rem;
+  background-color: #222831;
+  color: #d4faed;
+}
+
+
+.darkBackground {
+  background-color: #222831;
+}
+
+.darkColor{
+  color: #222831;
+}
+
+.modal-content  {
+  -webkit-border-radius: 33px !important;
+  -moz-border-radius: 33px !important;
+  border-radius: 33px !important;
+}
+
+.roundElement{
+  border-radius: 33px;
+}
+
+.form-control{
+  border-radius: 23px;
+  background-color:#222831;
+  color: #d4faed;
+  padding:.8rem;
+}
+
+.form-control:focus{
+  background-color:#222831;
+  color: #d4faed;
+}
+
+.container-full {
+  /* margin: 0 auto; */
+  width: 100%;
+}
+
+
+
+.accentColor {
+  color: #29c7ac;
+}
+.accentBackground {
+  background-color: #29c7ac;
+}
+
+.secondMainColor{
+  color: #834c69;
+}
+
+.secondMainBackground{
+  background-color: #834c69;
+}
+
+.mainColor {
+  color: #e6f5ff;
+}
+
+.mainBackground {
+  background-color: #e6f5ff;
+}
+
+
+
+.btn-xlarge {
+  padding: 1.15rem 1.45em;
+  font-size: 1.15rem;
+  line-height: normal;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem;
+}
+
+
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #55fac0(126, 239, 104, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
+
+
+
+.alertRed{
+  color:rgb(200, 67, 67);
+  font-weight: bolder;
+}

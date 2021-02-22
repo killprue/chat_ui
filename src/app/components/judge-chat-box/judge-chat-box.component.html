@@ -1,0 +1,57 @@
+<app-chat-box *ngIf="!viewingParticipantMessages" [filteredTime]='filteredTime' [question]="question"
+  [chatMessages]="chatMessages" [currentUser]="currentUser">
+</app-chat-box>
+<div *ngIf="viewingParticipantMessages">
+  <div class="container-fluid">
+    <div class="shadow-sm prompt justify-content-center d-flex">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <h5 [ngClass]="{'alertRed': roundApproaching, 'accentColor':true}">
+            {{filteredTime}}
+          </h5>
+        </div>
+        <div class="row justify-content-center">
+          <p>
+            <b>
+              {{question}}
+            </b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="dialog-window">
+      <div id="scrollable-content" #scrollViewJudge>
+        <div class="wordBreak" *ngFor="let message of chatMessages">
+          <div *ngIf="(chatMessages.indexOf(message) === 0) ||
+           (chatMessages[chatMessages.indexOf(message) -1] &&
+            chatMessages[chatMessages.indexOf(message) -1].username !== message.username)" [ngClass]="
+          {
+          'mt-2':true,
+          'd-flex':true,
+          'justify-content-center':true
+        }">
+            <p class="text-white"><b>{{ message.username }}</b></p>
+          </div>
+          <div [ngClass]="{
+
+            'container-fluid': true,
+            'd-flex':true,
+            'justify-content-center':true
+            }">
+            <p [ngClass]="{
+              'user1Message':chatMessages[0] && chatMessages[0].username === message.username,
+              'user2Message':chatMessages[0] && chatMessages[0].username !== message.username,
+              'pt-2':true,
+              'pb-2':true,
+              'pl-3 ':true,
+              'pr-3':true,
+              'text-white': true
+              }" style="border-radius: 25px; ">
+              {{ message.content }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

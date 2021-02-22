@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mb-2">
+    <h2 class="mainColor">
+      <b>
+        Register
+      </b>
+    </h2>
+  </div>
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card roundLogin shadow-lg  my-5 accentBackground mainColor">
+        <div class="card-body">
+          <form class="form-signin">
+            <div class="form-label-group mb-3">
+              <input type="email" [ngModelOptions]="{standalone:true}" [(ngModel)]="email" id="inputEmail" class="form-control" required autofocus>
+              <label for="inputEmail"><b class="mainColor">Email address</b> </label>
+            </div>
+            <div class="form-label-group mb-3">
+              <input type="username"[ngModelOptions]="{standalone:true}" [(ngModel)]="username" id="inputUsername" class="form-control" required autofocus>
+              <label for="inputUsername"><b class="mainColor">Username</b> </label>
+            </div>
+            <div class="form-label-group mb-3">
+              <input type="password"[ngModelOptions]="{standalone:true}" [(ngModel)]="password" id="inputPassword" class="form-control" required>
+              <label for="inputPassword"><b class="mainColor">Password</b> </label>
+            </div>
+            <!-- <div class="form-label-group mb-3">
+              <input type="password" id="inputPasswordConfirm" class="form-control" required>
+              <label for="inputPasswordConfirm"><b class="mainColor">Password Confirm</b> </label>
+            </div> -->
+            <!-- <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Remember password</label>
+            </div> -->
+            <div class="pb-2 ">
+              <button id="registerButton" (click)="submitForm()"
+                class="btn btn-lg mainBackground roundElement accentColor btn-block text-uppercase">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <p class="mainColor">Already have an account? <a class="accentColor" [routerLink]="['/login']"> <b>Login
+          Here.</b></a> </p>
+  </div>
+</div>

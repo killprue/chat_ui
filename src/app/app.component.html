@@ -1,0 +1,48 @@
+<!-- This shows that it is active: + active as a class on the nav item li -->
+<!-- <span class="sr-only">(current)</span> -->
+<nav class="navbar fixed-top navbar-expand-md navbar-dark accentColor bg-dark" *ngIf="isLoggedIn">
+  <button class="navbar-toggler" type="button" (click)="toggleNav()" [attr.data-toggle]="navBarIsToggled"
+    [attr.data-target]="mainNav" [attr.aria-controls]="mainNav" [attr.aria-expanded]="navBarIsToggled">
+    <!-- <span class="navbar-toggler-icon"></span> -->
+    <fa-icon class="accentColor navIcon" size="1x" [icon]="faBars"></fa-icon>
+  </button>
+  <a (click)="collapseNavIfToggled()" class="navbar-brand" [routerLink]="['/home']"><b class="accentColor navIcon">Daseiner</b></a>
+  <div [ngClass]="{'collapse': !navBarIsToggled, 'navbar-collapse':true}" #mainNav>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-auto">
+      <div class="row justify-content-center">
+        <li class="nav-item ml-3 mr-3">
+          <a class="nav-link" [routerLink]="['/home']" (click)="collapseNavIfToggled()">
+            <fa-icon class="accentColor navIcon" size="2x" [icon]="faGlobe"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item ml-3 mr-3">
+          <a class="nav-link" [routerLink]="['/home']" (click)="collapseNavIfToggled()">
+            <fa-icon class="accentColor navIcon" size="2x" [icon]="faComments"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item ml-3 mr-3">
+          <a class="nav-link" [routerLink]="['/home']" (click)="collapseNavIfToggled()">
+            <fa-icon class="accentColor navIcon" size="2x" [icon]="faCogs"></fa-icon>
+          </a>
+        </li>
+      </div>
+    </ul>
+    <div class="my-2 my-lg-0 mt-2">
+      <div [ngClass]="{'row': true, 'container-fluid':navBarIsToggled}">
+        <div class="justify-content-start">
+          <p style="font-size: large;" class="accentColor mt-3">{{ username }}</p>
+        </div>
+        <div class="justify-content-end mt-1">
+          <a [ngClass]="{'text-white':true, 'nav-link': !navBarIsToggled}" id="logoutLink"  (click)="logout();">
+            <fa-icon class="accentColor navIcon" size="2x" [icon]="faSignOutAlt"></fa-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div role="main" class="content" id='main'>
+  <router-outlet></router-outlet>
+</div>

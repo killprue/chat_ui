@@ -1,0 +1,10 @@
+label.active{
+  background-color: #29c7ac;
+  color:#d4faed;
+}
+
+label.inactive{
+  color: #222831;
+  background-color:#d4faed;
+}
+

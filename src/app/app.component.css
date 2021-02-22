@@ -1,0 +1,26 @@
+.navIcon:hover{
+  color:#d4faed;
+  cursor: pointer;
+}
+
+
+.navbar-toggler-icon{
+  color:#29c7ac;
+  cursor: pointer;
+}
+
+/*
+
+@media screen and (min-width:500){
+  #main{
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+
+@media screen and (max-width:499){
+  .navbar{
+    margin-top: 0;
+  }
+} */

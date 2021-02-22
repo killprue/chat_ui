@@ -1,0 +1,56 @@
+<div *ngIf="roomIsReady" class="container-full mb-5">
+  <app-judge-chat-box  [filteredTime]='filteredTime' [question]="question" [chatMessages]="messagesToShow"
+  [currentUser]="userId" [viewingParticipantMessages]="!showJudgeMessages">
+  </app-judge-chat-box>
+  <div class="container btn-group btn-group-toggle justify-content-center d-flex mt-1" data-toggle="buttons">
+    <label
+      [ngClass]="{'btn':true, 'roundElement':true, 'inactive': !showJudgeMessages, 'active': showJudgeMessages}">
+      <input id="judgeChoice" [disabled]="!chatOpen" (click)="swapChatView($event)" type="radio" name="options" autocomplete="off" [attr.checked]="showJudgeMessages"> Judges
+    </label>
+    <label
+      [ngClass]="{'btn':true, 'roundElement':true, 'inactive': showJudgeMessages, 'active': !showJudgeMessages}">
+      <input id="participantChoice" type="radio" [disabled]="!chatOpen" (click)="swapChatView($event)" name="options" autocomplete="off" [attr.checked]="!showJudgeMessages">
+      Participants
+    </label>
+  </div>
+  <div class="container mt-2 mb-2" *ngIf="showJudgeMessages">
+    <div class="d-flex justify-content-center">
+      <textarea [disabled]="!chatOpen" type="text" class="form-control" [(ngModel)]="newMessage" (keyup)="checkInput($event)"
+        class="form-control" id="chatTextArea" rows="2"></textarea>
+    </div>
+    <div class="row d-flex justify-content-end m-1">
+      <small
+        [ngClass]="{'alertRed': messageCharCount === 2500, 'accentColor':messageCharCount !== 2500}">{{messageCharCount}}/2500
+        characters</small>
+    </div>
+    <div class="row mt-1 d-flex justify-content-center">
+      <button [disabled]="messageCharCount <= 0" (click)="sendMessageToChat()"
+        class="accentBackground text-white btn btn-lg">Send</button>
+    </div>
+  </div>
+</div>
+
+
+<div  class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+  tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+  <div class="modal-dialog accentColor">
+    <div class="modal-content darkBackground">
+      <div class="modal-header">
+        <h3 class="modal-title" id="staticBackdropLabel"><b> Notice!</b></h3>
+      </div>
+      <div class="modal-body">
+        <h5>
+          <b>
+            The session was prematurely terminated by one of the participants.
+            The room is no longer valid. You will now be redirected home.
+          </b>
+        </h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="acknowledgeUserTerminate()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button #triggerModalDisconnect style="display: none;" data-toggle="modal" data-target="#staticBackdrop"></button>

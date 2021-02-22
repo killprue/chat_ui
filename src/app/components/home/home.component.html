@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <p>Welcome to <b class="accentColor"> dasein.</b></p>
+  </div>
+  <div *ngIf="currentMatch">
+    <div *ngIf="currentMatch.hasActiveMatch" class="container">
+      <div class="d-flex justify-content-center">
+        <p>You are currently a {{ currentMatch.roomInfo.userType }} in a match.
+          This match started {{ currentMatch.roomInfo.activatedDate }}</p>
+      </div>
+      <div class="row d-flex justify-content-center">
+
+        <a class="btn mainColor accentBackground" (click)="navigateToActiveMatch()">Go to Match</a>
+      </div>
+    </div>
+    <div *ngIf="currentMatch.isQueued" class="row d-flex justify-content-center">
+      <p>You are currently queued to be a {{ currentMatch.roomInfo.userType }} in a match. Cancel open matching
+        connections to requeue.</p>
+    </div>
+    <div *ngIf="!currentMatch.hasActiveMatch && !currentMatch.isQueued">
+      <div class="row d-flex justify-content-center">
+        <p>Join a Conversation</p>
+      </div>
+      <div class="mt-3 row d-flex justify-content-center">
+        <button class="btn btn-xlarge accentBackground mainColor" (click)="lookForParticipantRoom()">Participant
+          Chat</button>
+      </div>
+      <div class="mt-3 row d-flex justify-content-center">
+        <button class="btn btn-xlarge accentBackground mainColor" (click)="lookForJudgeRoom()">Judge Chat</button>
+      </div>
+    </div>
+  </div>
+</div>

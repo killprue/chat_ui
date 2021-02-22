@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="shadow-sm prompt justify-content-center d-flex">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <h5 [ngClass]="{'alertRed': roundApproaching, 'accentColor':true}">
+          {{filteredTime}}
+        </h5>
+      </div>
+      <div class="row justify-content-center">
+        <p>
+          <b>
+            {{question}}
+          </b>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="card" id="dialog-window">
+    <div id="scrollable-content" #scrollView>
+      <div class="container-fluid wordBreak" *ngFor="let message of chatMessages">
+        <div *ngIf="(chatMessages.indexOf(message) === 0) ||
+         (chatMessages[chatMessages.indexOf(message) -1] &&
+          chatMessages[chatMessages.indexOf(message) -1].username !== message.username)" [ngClass]="
+        {
+        'mt-2':true,
+        'row':true,
+        'd-flex':true,
+        'justify-content-end':isCurrentUser(message.userid),
+        'justify-content-start':!isCurrentUser(message.userid)
+      }">
+          <p class="text-white"><b>{{ message.username }}</b></p>
+        </div>
+        <div [ngClass]="{
+          'row':true,
+          'container-fluid': true,
+          'd-flex':true,
+          'justify-content-end':isCurrentUser(message.userid),
+          'justify-content-start':!isCurrentUser(message.userid)
+          }">
+          <p [ngClass]="{
+            'otherUserMessage':!isCurrentUser(message.userid),
+            'currentUserMessage': isCurrentUser(message.userid),
+            'pt-2':true,
+            'pb-2':true,
+            'pl-3 ':true,
+            'pr-3':true,
+            'text-white': true
+            }" style="border-radius: 25px; ">
+            {{ message.content }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
